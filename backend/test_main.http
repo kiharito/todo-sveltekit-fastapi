@@ -1,8 +1,16 @@
-GET http://127.0.0.1:8000/tasks/1
+PUT http://127.0.0.1:8000/tasks/1/
+Content-Type: application/json
+
+{
+  "title": "updated"
+}
+
+###
+GET http://127.0.0.1:8000/tasks/1/
 Accept: application/json
 
 ###
-GET http://127.0.0.1:8000/tasks
+GET http://127.0.0.1:8000/tasks/
 Accept: application/json
 
 ###

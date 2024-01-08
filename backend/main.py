@@ -38,3 +38,11 @@ async def read_task(task_id: int, db: Session = Depends(get_db)):
     if task is None:
         raise HTTPException(status_code=404, detail="Task not found")
     return task
+
+
+@app.put("/tasks/{task_id}/", response_model=schemas.Task)
+async def update_task(task_id: int, task: schemas.TaskUpdate, db: Session = Depends(get_db)):
+    current_task = crud.read_task(db=db, task_id=task_id)
+    if current_task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return crud.update_task(db=db, current_task=current_task, task=task)
