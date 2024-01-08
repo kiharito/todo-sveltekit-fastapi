@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
-import models
-import schemas
+from . import models
+from . import schemas
 
 
 def get_tasks(db: Session, skip: int = 0, limit: int = 10):

@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 
-from models import Base
-from database import SQLALCHEMY_DATABASE_URL
+from .models import Base
+from .database import SQLALCHEMY_DATABASE_URL
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 
