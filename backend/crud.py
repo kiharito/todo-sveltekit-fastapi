@@ -26,3 +26,8 @@ def update_task(db: Session, current_task: models.Task, task: schemas.TaskUpdate
 
 def read_task(db: Session, task_id: int):
     return db.get(models.Task, task_id)
+
+
+def delete_task(db: Session, current_task: models.Task):
+    db.delete(current_task)
+    db.commit()

@@ -46,3 +46,12 @@ async def update_task(task_id: int, task: schemas.TaskUpdate, db: Session = Depe
     if current_task is None:
         raise HTTPException(status_code=404, detail="Task not found")
     return crud.update_task(db=db, current_task=current_task, task=task)
+
+
+@app.delete("/tasks/{task_id}/")
+async def delete_task(task_id: int, db: Session = Depends(get_db)):
+    current_task = crud.read_task(db=db, task_id=task_id)
+    if current_task is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+    crud.delete_task(db=db, current_task=current_task)
+    return {"message": "Task deleted"}
